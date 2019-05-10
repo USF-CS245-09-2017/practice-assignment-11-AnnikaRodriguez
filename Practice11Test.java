@@ -6,19 +6,19 @@ import java.util.ArrayList;
 
 
 public class Practice11Test {
-	
-	
+
+
 	public Practice11Test() {
 	}
-	
-	
+
+
 	public boolean storeTest() {
 		String key = "kick";
 		String val = "push";
 		boolean success = false;
-		
+
 		Hashtable hashtable = new Hashtable();
-		
+
 		try {
 			hashtable.put(key, val);
 			if (hashtable.get(key).equals(val)) {
@@ -30,14 +30,14 @@ public class Practice11Test {
 		}
 		return success;
 	}
-	
-	
+
+
 	public boolean notStoredTest() {
 		String key = "American Terrorist";
 		boolean success = false;
-		
+
 		Hashtable hashtable = new Hashtable();
-		
+
 		try {
 			if (! hashtable.containsKey(key)) {
 				if (hashtable.get(key).equals(null))
@@ -52,15 +52,15 @@ public class Practice11Test {
 		}
 		return success;
 	}
-	
-	
+
+
 	public boolean basicRemoveTest() {
 		String key = "daydream";
 		String val = "I dream of you amid the flowers";
 		boolean success = false;
-		
+
 		Hashtable hashtable = new Hashtable();
-		
+
 		try {
 			hashtable.put(key, val);
 			if (hashtable.remove(key).equals(val)) {
@@ -75,14 +75,14 @@ public class Practice11Test {
 		}
 		return success;
 	}
-	
-	
+
+
 	public boolean advancedRemoveTest() {
 		String key = "food for thought";
 		boolean success = false;
-		
+
 		Hashtable hashtable = new Hashtable();
-		
+
 		try {
 			if (! hashtable.containsKey(key)) {
 				String shouldNotExist = hashtable.remove(key);
@@ -98,8 +98,8 @@ public class Practice11Test {
 		}
 		return success;
 	}
-	
-	
+
+
 	public long timingTest() {
 		File file = new File("/usr/share/dict/web2");
 		BufferedReader reader = null;
@@ -108,9 +108,9 @@ public class Practice11Test {
 		boolean success = true;
 		long start = 0;
 		long end = 0;
-		
+
 		Hashtable hashtable = new Hashtable();
-		
+
 		try {
 		    reader = new BufferedReader(new FileReader(file));
 		    String text = null;
@@ -134,47 +134,47 @@ public class Practice11Test {
 			System.out.println("Unable to conduct timing test.");
 			success = false;
 		}
-		
+
 		if (! success)
 			return Long.MAX_VALUE;
-		
+
 		return (end-start);
 	}
-	
-	
+
+
 	public void runTest () {
 		int grade = 0;
-		
+
 		if (storeTest()) {
 			grade += 10;
 			System.out.println("[+10%] Passed insert test");
 		} else {
 			System.out.println("[    ] Failed insert test");
 		}
-		
+
 		// notStoredTest
-		
+
 		if (notStoredTest()) {
 			grade += 10;
 			System.out.println("[+10%] Passed \"not present\" test");
 		} else {
 			System.out.println("[    ] Failed \"not present\" test");
 		}
-		
+
 		if (basicRemoveTest()) {
 			grade += 20;
 			System.out.println("[+20%] Passed basic remove test");
 		} else {
 			System.out.println("[    ] Failed basic remove test");
 		}
-		
+
 		if (advancedRemoveTest()) {
 			grade += 25;
 			System.out.println("[+25%] Passed advanced remove test");
 		} else {
 			System.out.println("[    ] Failed advanced remove test");
 		}
-		
+
 		long time = timingTest();
 		if (time < 200) {
 			grade += 35;
@@ -182,14 +182,14 @@ public class Practice11Test {
 		} else {
 			System.out.println("[    ] Failed timing test -- took " + time + "ms. (Should be less than 200ms.)");
 		}
-		
+
 		System.out.println("Grade for this assignment: " + grade + "%");
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		Practice11Test test = new Practice11Test();
 		test.runTest();
 	}
-	
+
 }
